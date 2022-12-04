@@ -34,5 +34,6 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'react/destructuring-assignment': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/no-unescaped-entities': 'off',
   },
 };

@@ -18,9 +18,8 @@ const lazyLoad = (component: string) => {
       fallback={
         <Spin
           style={{
-            height: '100vh',
+            height: '100%',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
           }}
