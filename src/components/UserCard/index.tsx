@@ -1,12 +1,13 @@
 import React from 'react';
 import { EnvironmentOutlined, GithubOutlined, HomeOutlined } from '@ant-design/icons';
 import { Wrapper } from './style';
+import avatar from '@/assets/images/avatar.jpg';
 
 const UserCard = () => {
   return (
     <Wrapper>
       <header>
-        <img src="" alt="" />
+        <img src={avatar} alt="" />
       </header>
       <div className="main">
         <div className="nickName">wuqiulee</div>

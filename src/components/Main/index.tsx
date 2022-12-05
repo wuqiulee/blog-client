@@ -1,6 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import UserCard from '@/components/UserCard';
+import Player from '@/components/Player';
+import EveryDay from '@/components/EveryDay';
 import { Wrapper } from './style';
 
 const Main = () => {
@@ -11,6 +13,8 @@ const Main = () => {
       </div>
       <div className="silder">
         <UserCard />
+        <Player />
+        <EveryDay />
       </div>
     </Wrapper>
   );
