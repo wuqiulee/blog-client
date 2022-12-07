@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 1200px;
-  margin: 0 auto;
-  padding: 20px 0;
+  .mainWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
 
-  .content {
-    width: 75%;
-    margin-right: 20px;
-    background-color: #bfa;
-  }
+    .content {
+      width: 75%;
+      margin-right: 20px;
+      /* background-color: #bfa; */
+    }
 
-  .silder {
-    width: 25%;
+    .silder {
+      width: 25%;
+    }
   }
 `;
