@@ -7,12 +7,15 @@ export const Wrapper = styled.div`
     color: #2c3e50;
     font-weight: 600;
     font-size: 20px;
-    margin-bottom: 20px;
     text-align: center;
   }
 
   .explain {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px auto;
+
+    & > span:nth-child(2) {
+      margin: 0 20px;
+    }
   }
 `;

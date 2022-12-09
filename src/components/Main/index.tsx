@@ -11,7 +11,7 @@ const Main = () => {
     <Wrapper>
       <HeadBg />
       <div className="mainWrap">
-        <div className="content">
+        <div className="contentWrap">
           <Outlet />
         </div>
         <div className="silder">

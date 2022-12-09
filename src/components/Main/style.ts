@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     margin: 0 auto;
     padding: 20px 0;
 
-    .content {
+    .contentWrap {
       width: 75%;
       margin-right: 20px;
       /* background-color: #bfa; */
