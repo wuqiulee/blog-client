@@ -6,3 +6,11 @@ export const getArticleList = async () => {
     url: '/article/list',
   });
 };
+
+// 查询文章
+export const queryArticle = async (params: { id: number }) => {
+  return request({
+    url: '/article/query',
+    params,
+  });
+};

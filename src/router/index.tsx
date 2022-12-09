@@ -52,6 +52,11 @@ const routes: Router[] = [
         element: lazyLoad('Article'),
       },
       {
+        name: '文章详情',
+        path: '/article/:id',
+        element: lazyLoad('Article/ArticleDetail'),
+      },
+      {
         name: '标签',
         path: '/tag',
         element: lazyLoad('Tag'),

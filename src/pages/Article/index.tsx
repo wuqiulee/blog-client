@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
 import dayjs from 'dayjs';
@@ -8,13 +9,16 @@ import { ArticleType } from '@/types/article';
 import { ArticleWrapper } from './style';
 
 const Article: React.FC = () => {
+  const navigate = useNavigate();
   const { data } = useRequest(getArticleList);
   const articleList = get(data, 'data.result', []);
+
+  const gotoDetail = (id: number) => navigate(`/article/${id}`);
 
   return (
     <>
       {articleList.map((item: ArticleType) => (
-        <ArticleWrapper>
+        <ArticleWrapper onClick={() => gotoDetail(item.id)}>
           <h3>{item.title}</h3>
           <div>
             <span>
