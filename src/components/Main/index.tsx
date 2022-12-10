@@ -4,9 +4,10 @@ import HeadBg from '../HeadBg';
 import UserCard from '@/components/UserCard';
 import Player from '@/components/Player';
 import EveryDay from '@/components/EveryDay';
+import BackTop from '@/components/BackTop';
 import { Wrapper } from './style';
 
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <Wrapper>
       <HeadBg />
@@ -20,6 +21,7 @@ const Main = () => {
           <EveryDay />
         </div>
       </div>
+      <BackTop />
     </Wrapper>
   );
 };

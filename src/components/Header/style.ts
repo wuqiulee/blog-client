@@ -5,6 +5,7 @@ const Color = '#1677ff';
 export const Wrapper = styled.div`
   width: 100%;
   position: fixed;
+  z-index: 999;
   left: 0;
   top: 0;
   background-color: hsla(0, 0%, 100%, 0.8);
