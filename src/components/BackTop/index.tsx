@@ -12,7 +12,7 @@ const BackTop: React.FC = () => {
   };
 
   useEffect(() => {
-    const scroll = () => {
+    const handleScroll = () => {
       const { scrollTop } = document.documentElement;
       if (scrollTop > 150) {
         setShow(true);
@@ -20,10 +20,10 @@ const BackTop: React.FC = () => {
         setShow(false);
       }
     };
-    window.addEventListener('scroll', scroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', scroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

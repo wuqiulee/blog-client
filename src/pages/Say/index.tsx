@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
 import dayjs from 'dayjs';
-import { Pagination } from 'antd';
 import { getSayList } from '@/services/api/say';
-import { SayWrapper } from './style';
+import { SayWrapper, PaginationWrapper } from './style';
 import { SayType } from '@/types/say';
 
 const Say: React.FC = () => {
-  const { data } = useRequest(getSayList);
+  const { run, data } = useRequest(getSayList, {
+    defaultParams: [{ pageNum: 0, pageSize: 8 }],
+  });
   const sayList = get(data, 'data.result', []);
   const totalCount = get(data, 'data.total', 0);
+  const pageNum = get(data, 'data.pageNum', 0);
+
+  const onChange = useCallback((page: number, pageSize: number) => {
+    run({ pageNum: page - 1, pageSize });
+  }, []);
 
   return (
     <>
@@ -22,7 +28,12 @@ const Say: React.FC = () => {
           <div className="date">—— {dayjs(item.publishTime).format('YYYY-MM-DD HH:mm:ss')}</div>
         </SayWrapper>
       ))}
-      <Pagination defaultCurrent={2} total={totalCount} />
+      <PaginationWrapper
+        current={pageNum}
+        total={totalCount}
+        defaultPageSize={8}
+        onChange={onChange}
+      />
     </>
   );
 };

@@ -1,9 +1,15 @@
 import request from '../request';
 
+interface Params {
+  pageSize?: number;
+  pageNum?: number;
+}
+
 // 获取文章列表
-export const getArticleList = async () => {
+export const getArticleList = async (params: Params) => {
   return request({
     url: '/article/list',
+    params,
   });
 };
 

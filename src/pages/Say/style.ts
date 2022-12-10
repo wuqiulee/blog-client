@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Pagination } from 'antd';
 
 export const SayWrapper = styled.div`
   background-color: #fff;
@@ -29,4 +30,10 @@ export const SayWrapper = styled.div`
   .date {
     text-align: right;
   }
+`;
+
+export const PaginationWrapper = styled(Pagination)`
+  background-color: #fff;
+  padding: 10px 20px;
+  text-align: right;
 `;
