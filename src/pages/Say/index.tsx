@@ -16,6 +16,9 @@ const Say: React.FC = () => {
 
   const onChange = useCallback((page: number, pageSize: number) => {
     run({ pageNum: page - 1, pageSize });
+    window.scrollTo({
+      top: 0,
+    });
   }, []);
 
   return (

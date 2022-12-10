@@ -35,7 +35,7 @@ const ArticleDetail = () => {
       <Editor
         editorId="my-editor"
         modelValue={content}
-        previewTheme="github"
+        previewTheme="default"
         // onHtmlChanged={() => {
         //   setEditorShow(true);
         // }}

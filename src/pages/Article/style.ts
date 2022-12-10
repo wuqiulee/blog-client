@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Pagination } from 'antd';
 
 export const ArticleWrapper = styled.div`
   background-color: #fff;
@@ -24,4 +25,10 @@ export const ArticleWrapper = styled.div`
     color: #999;
     margin-right: 18px;
   }
+`;
+
+export const PaginationWrapper = styled(Pagination)`
+  background-color: #fff;
+  padding: 10px 20px;
+  text-align: right;
 `;

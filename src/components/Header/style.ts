@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   z-index: 999;
   left: 0;
   top: 0;
-  background-color: hsla(0, 0%, 100%, 0.8);
+  /* background-color: hsla(0, 0%, 100%, 0.8); */
+  background-color: #fff;
   box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
 
   .container {
