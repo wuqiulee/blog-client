@@ -15,6 +15,7 @@ export interface MessageParams {
 export interface MessageData {
   nickName: string;
   email?: string;
-  content: string;
+  content: any;
   replyId?: number;
+  avatar?: string;
 }

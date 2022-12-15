@@ -22,18 +22,24 @@ const Editor = () => {
     'clear',
   ];
 
-  const onFinish = async (values: MessageData) => {
-    console.log(values);
+  const publishMsg = async () => {
+    const values = await form.validateFields();
     const res: any = await createMessage({
       ...values,
+      avatar,
+      content: values.content.toHTML(),
     });
     if (res?.code === 0) {
+      form.resetFields(['content']);
       message.success('留言发布成功！');
     }
   };
 
-  const onBlur = () => {
+  const onPressEnter = () => {
     const nickName = form.getFieldValue('nickName');
+    if (!nickName?.trim()) {
+      return;
+    }
     if (/[1-9][0-9]{4,11}/.test(nickName)) {
       const avatarUrl = ` https://q1.qlogo.cn/g?b=qq&nk=${nickName}&s=100`;
       form.setFieldsValue({
@@ -49,39 +55,31 @@ const Editor = () => {
 
   return (
     <EditorWrapper>
-      <Form form={form} onFinish={onFinish}>
+      <Form form={form}>
         <div className="userInfo">
           <div className="avatar">
             <img src={avatar} alt="" />
           </div>
-          <Form.Item
-            name="nickName"
-            className="input"
-            rules={[{ required: true, message: '请输入昵称！' }]}
-          >
-            <InputWrapper prefix={<UserOutlined />} onBlur={onBlur} placeholder="昵称" />
+          <Form.Item name="nickName" className="input" rules={[{ required: true }]}>
+            <InputWrapper
+              prefix={<UserOutlined />}
+              onPressEnter={onPressEnter}
+              placeholder="昵称"
+              size="large"
+            />
           </Form.Item>
-          <Form.Item
-            name="email"
-            className="input"
-            rules={[{ required: true, message: '请输入邮箱！' }]}
-          >
-            <InputWrapper prefix={<MailOutlined />} placeholder="邮箱" />
+          <Form.Item name="email" className="input" rules={[{ required: true }]}>
+            <InputWrapper prefix={<MailOutlined />} placeholder="邮箱" size="large" />
           </Form.Item>
         </div>
-        <Form.Item
-          name="content"
-          rules={[{ required: true, message: '请输入留言内容！' }]}
-          style={{ marginBottom: 10 }}
-        >
+        <Form.Item name="content" rules={[{ required: true }]} style={{ marginBottom: 10 }}>
           <BraftEditor
-            // ref={(instance) => setEditorInstance(instance)}
             className="editor"
             controls={controls}
-            // value={text}
+            placeholder="在「昵称」处填写QQ号，Enther获取「头像」和「QQ邮箱」"
           />
         </Form.Item>
-        <Button size="large" htmlType="submit" className="btn">
+        <Button size="large" onClick={publishMsg} className="btn">
           发布
         </Button>
       </Form>
