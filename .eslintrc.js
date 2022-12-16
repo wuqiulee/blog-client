@@ -35,5 +35,8 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/no-unescaped-entities': 'off',
+    'react/no-danger': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
 };

@@ -19,3 +19,8 @@ export interface MessageData {
   replyId?: number;
   avatar?: string;
 }
+
+export interface MsgInfo {
+  replyId: number;
+  nickName: string;
+}

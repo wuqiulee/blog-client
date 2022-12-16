@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
-import { Button, Form, Input, Card, Col, Row, Select, Space, message } from 'antd';
+import { Button, Form, Input, Tag, Col, Row, Select, Space, message } from 'antd';
 import { UserOutlined, MailOutlined } from '@ant-design/icons';
 import { createMessage, replyMessage } from '@/services/api/message';
-import { MessageData } from '@/types/message';
+import { MessageData, MessageParams, MsgInfo } from '@/types/message';
 import { EditorWrapper, InputWrapper } from './style';
 import defaultAvatarUrl from '@/assets/images/avatar.jpg';
 
-const Editor = () => {
+type Iprops = {
+  run: (params: MessageParams) => void;
+  onClose: () => void;
+  replyInfo: MsgInfo;
+};
+
+const Editor: React.FC<Iprops> = ({ run, onClose, replyInfo }) => {
   const [avatar, setAvatar] = useState<string>(defaultAvatarUrl);
   const [form] = Form.useForm();
 
@@ -24,12 +30,13 @@ const Editor = () => {
 
   const publishMsg = async () => {
     const values = await form.validateFields();
-    const res: any = await createMessage({
-      ...values,
-      avatar,
-      content: values.content.toHTML(),
-    });
+    const params = { ...values, avatar, content: values.content.toHTML() };
+    const { nickName, replyId } = replyInfo;
+    const res: any = nickName
+      ? await replyMessage({ ...params, replyId })
+      : await createMessage(params);
     if (res?.code === 0) {
+      run({ pageNum: 0, pageSize: 8 });
       form.resetFields(['content']);
       message.success('留言发布成功！');
     }
@@ -79,9 +86,16 @@ const Editor = () => {
             placeholder="在「昵称」处填写QQ号，Enther获取「头像」和「QQ邮箱」"
           />
         </Form.Item>
-        <Button size="large" onClick={publishMsg} className="btn">
-          发布
-        </Button>
+        <div className="replyBox">
+          {replyInfo.nickName && (
+            <Tag closable onClose={onClose} style={{ fontSize: 14 }}>
+              回复 @{replyInfo.nickName}
+            </Tag>
+          )}
+          <Button size="large" onClick={publishMsg} className="btn">
+            发布
+          </Button>
+        </div>
       </Form>
     </EditorWrapper>
   );

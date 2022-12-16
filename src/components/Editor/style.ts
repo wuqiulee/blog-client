@@ -38,8 +38,12 @@ export const EditorWrapper = styled.div`
     }
   }
 
-  .btn {
-    float: right;
+  .replyBox {
+    overflow: hidden;
+
+    .btn {
+      float: right;
+    }
   }
 `;
 
