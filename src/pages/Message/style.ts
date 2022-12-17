@@ -71,6 +71,10 @@ export const MessageWrapper = styled.div`
             border-radius: 10px;
             overflow: hidden;
 
+            .top {
+              display: block;
+            }
+
             .childContent {
               padding: 10px 20px 20px;
 
