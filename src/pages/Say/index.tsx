@@ -24,7 +24,7 @@ const Say: React.FC = () => {
   return (
     <>
       {sayList.map((item: SayType) => (
-        <SayWrapper>
+        <SayWrapper key={item.id}>
           <div className="content">
             <div>{item.content}</div>
           </div>

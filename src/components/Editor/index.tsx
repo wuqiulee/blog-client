@@ -38,6 +38,7 @@ const Editor: React.FC<Iprops> = ({ run, onClose, replyInfo }) => {
     if (res?.code === 0) {
       run({ pageNum: 0, pageSize: 8 });
       form.resetFields(['content']);
+      onClose();
       message.success('留言发布成功！');
     }
   };

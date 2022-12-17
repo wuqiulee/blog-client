@@ -17,21 +17,6 @@ const Message: React.FC = () => {
   const [replyInfo, setReplyInfo] = useState<MsgInfo>({ replyId: 0, nickName: '' });
   const { run, data } = useRequest(getMessageList);
   const messageList = get(data, 'data.result', []);
-  const msgArr = messageList.filter((v: MessageType) => !v.replyId);
-
-  const messageData = useMemo(() => {
-    messageList.forEach((msg: MessageType) => {
-      if (msg.replyId) {
-        const ret = msgArr.find((v: MessageType) => v.id === msg.replyId);
-        if (ret.children) {
-          ret.children.push(msg);
-        } else {
-          ret.children = [msg];
-        }
-      }
-    });
-    return msgArr;
-  }, [messageList]);
 
   const replyMsg = (msgInfo: MsgInfo) => {
     setReplyInfo(msgInfo);
@@ -49,9 +34,9 @@ const Message: React.FC = () => {
   return (
     <MessageWrapper>
       <Editor run={run} replyInfo={replyInfo} onClose={onClose} />
-      <div className="total">{`${messageData?.length}条留言`}</div>
-      {messageData.map((item: MessageType) => (
-        <div className="messageItem">
+      <div className="total">{`${messageList?.length}条留言`}</div>
+      {messageList.map((item: MessageType) => (
+        <div key={item.id} className="messageItem">
           <img src={item.avatar || defaultAvatarUrl} alt="" />
           <div className="messageBox">
             <div className="top">
@@ -74,6 +59,33 @@ const Message: React.FC = () => {
                 __html: item.content,
               }}
             />
+            {item.children && (
+              <div className="childWrap">
+                {item.children.map((child) => (
+                  <div className="messageChild" key={child.id}>
+                    <img src={child.avatar || defaultAvatarUrl} alt="" />
+                    <div className="childBox">
+                      <div className="top">
+                        <span className="nickName">{child.nickName}</span>
+                        <span className="date">
+                          {dayjs(dayjs(child.publishTime).format('YYYY-MM-DD')).fromNow()}
+                        </span>
+                      </div>
+                      <div className="childContent">
+                        <div className="reply">
+                          回复<span> @{item.nickName}</span>
+                        </div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: child.content,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       ))}

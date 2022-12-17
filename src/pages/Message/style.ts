@@ -24,6 +24,7 @@ export const MessageWrapper = styled.div`
       background-color: hsla(0, 0%, 100%, 0.8);
       border: 1px solid #d9d9d9;
       border-radius: 10px;
+      overflow: hidden;
 
       .top {
         display: flex;
@@ -46,7 +47,43 @@ export const MessageWrapper = styled.div`
       }
 
       .content {
-        padding: 20px 20px;
+        padding: 20px;
+      }
+
+      .childWrap {
+        margin-top: 20px;
+        .messageChild {
+          display: flex;
+          padding: 0 20px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
+          }
+
+          .childBox {
+            flex: 1;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            background-color: hsla(0, 0%, 100%, 0.8);
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+            overflow: hidden;
+
+            .childContent {
+              padding: 10px 20px 20px;
+
+              .reply {
+                font-size: 14px;
+                margin-bottom: 10px;
+
+                span {
+                  color: rgb(116, 117, 155);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

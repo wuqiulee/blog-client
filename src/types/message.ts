@@ -5,6 +5,7 @@ export interface MessageType {
   nickName: string;
   avatar?: string;
   replyId?: number;
+  children?: MessageType[];
 }
 
 export interface MessageParams {

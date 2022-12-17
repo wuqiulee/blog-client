@@ -29,7 +29,7 @@ const Article: React.FC = () => {
   return (
     <>
       {articleList.map((item: ArticleType) => (
-        <ArticleWrapper onClick={() => gotoDetail(item.id)}>
+        <ArticleWrapper key={item.id} onClick={() => gotoDetail(item.id)}>
           <h3>{item.title}</h3>
           <div>
             <span>
