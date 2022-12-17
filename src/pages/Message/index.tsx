@@ -7,7 +7,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { getMessageList } from '@/services/api/message';
 import { MessageType, MsgInfo } from '@/types/message';
 import Editor from '@/components/Editor';
-import { MessageWrapper } from './style';
+import { MessageWrapper, PaginationWrapper } from './style';
 import defaultAvatarUrl from '@/assets/images/avatar.jpg';
 
 dayjs.locale('zh-cn');
@@ -15,8 +15,12 @@ dayjs.extend(relativeTime);
 
 const Message: React.FC = () => {
   const [replyInfo, setReplyInfo] = useState<MsgInfo>({ replyId: 0, nickName: '' });
-  const { run, data } = useRequest(getMessageList);
+  const { run, data } = useRequest(getMessageList, {
+    defaultParams: [{ pageNum: 0, pageSize: 8 }],
+  });
   const messageList = get(data, 'data.result', []);
+  const totalCount = get(data, 'data.total', 0);
+  const pageNum = get(data, 'data.pageNum', 0);
 
   const replyMsg = (msgInfo: MsgInfo) => {
     setReplyInfo(msgInfo);
@@ -29,6 +33,13 @@ const Message: React.FC = () => {
   // 留言回复tag关闭的回调
   const onClose = useCallback(() => {
     setReplyInfo({ ...replyInfo, nickName: '' });
+  }, []);
+
+  const onChange = useCallback((page: number, pageSize: number) => {
+    run({ pageNum: page - 1, pageSize });
+    window.scrollTo({
+      top: 0,
+    });
   }, []);
 
   return (
@@ -89,6 +100,12 @@ const Message: React.FC = () => {
           </div>
         </div>
       ))}
+      <PaginationWrapper
+        current={pageNum}
+        total={totalCount}
+        defaultPageSize={8}
+        onChange={onChange}
+      />
     </MessageWrapper>
   );
 };

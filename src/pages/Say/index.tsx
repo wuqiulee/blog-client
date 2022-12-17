@@ -8,7 +8,7 @@ import { SayType } from '@/types/say';
 
 const Say: React.FC = () => {
   const { run, data } = useRequest(getSayList, {
-    defaultParams: [{ pageNum: 0, pageSize: 8 }],
+    defaultParams: [{ pageNum: 0, pageSize: 10 }],
   });
   const sayList = get(data, 'data.result', []);
   const totalCount = get(data, 'data.total', 0);
@@ -34,7 +34,7 @@ const Say: React.FC = () => {
       <PaginationWrapper
         current={pageNum}
         total={totalCount}
-        defaultPageSize={8}
+        defaultPageSize={10}
         onChange={onChange}
       />
     </>

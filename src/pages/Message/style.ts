@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Pagination } from 'antd';
 
 export const MessageWrapper = styled.div`
   .total {
@@ -87,4 +88,10 @@ export const MessageWrapper = styled.div`
       }
     }
   }
+`;
+
+export const PaginationWrapper = styled(Pagination)`
+  background-color: #fff;
+  padding: 10px 20px;
+  text-align: right;
 `;
