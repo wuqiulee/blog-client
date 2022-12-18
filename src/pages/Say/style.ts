@@ -37,3 +37,12 @@ export const PaginationWrapper = styled(Pagination)`
   padding: 10px 20px;
   text-align: right;
 `;
+
+export const TitleWrapper = styled.div`
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+`;

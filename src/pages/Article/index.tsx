@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { CalendarOutlined, FolderOpenOutlined, TagsOutlined } from '@ant-design/icons';
 import { getArticleList } from '@/services/api/article';
 import { ArticleType } from '@/types/article';
-import { ArticleWrapper, PaginationWrapper } from './style';
+import { ArticleWrapper, PaginationWrapper, TitleWrapper } from './style';
 
 const Article: React.FC = () => {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const Article: React.FC = () => {
 
   return (
     <>
+      <TitleWrapper>我的文章</TitleWrapper>
       {articleList.map((item: ArticleType) => (
         <ArticleWrapper key={item.id} onClick={() => gotoDetail(item.id)}>
           <h3>{item.title}</h3>

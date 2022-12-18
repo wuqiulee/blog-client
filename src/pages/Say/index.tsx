@@ -3,7 +3,7 @@ import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
 import dayjs from 'dayjs';
 import { getSayList } from '@/services/api/say';
-import { SayWrapper, PaginationWrapper } from './style';
+import { SayWrapper, PaginationWrapper, TitleWrapper } from './style';
 import { SayType } from '@/types/say';
 
 const Say: React.FC = () => {
@@ -23,6 +23,7 @@ const Say: React.FC = () => {
 
   return (
     <>
+      <TitleWrapper>我的说说</TitleWrapper>
       {sayList.map((item: SayType) => (
         <SayWrapper key={item.id}>
           <div className="content">
