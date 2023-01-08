@@ -54,7 +54,7 @@ const Message: React.FC = () => {
               <div>
                 <span className="nickName">{item.nickName}</span>
                 <span className="date">
-                  {dayjs(dayjs(item.publishTime).format('YYYY-MM-DD')).fromNow()}
+                  {dayjs(dayjs(item.createTime).format('YYYY-MM-DD')).fromNow()}
                 </span>
               </div>
               <span
@@ -79,7 +79,7 @@ const Message: React.FC = () => {
                       <div className="top">
                         <span className="nickName">{child.nickName}</span>
                         <span className="date">
-                          {dayjs(dayjs(child.publishTime).format('YYYY-MM-DD')).fromNow()}
+                          {dayjs(dayjs(child.createTime).format('YYYY-MM-DD')).fromNow()}
                         </span>
                       </div>
                       <div className="childContent">

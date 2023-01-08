@@ -1,7 +1,7 @@
 export interface MessageType {
   id: number;
   content: string;
-  publishTime: Date;
+  createTime: Date;
   nickName: string;
   avatar?: string;
   replyId?: number;
