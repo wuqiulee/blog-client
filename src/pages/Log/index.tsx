@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
+import { Spin } from 'antd';
 import { getLogList } from '@/services/api/log';
 import { LogWrapper, PaginationWrapper } from './style';
 
@@ -11,7 +12,7 @@ type LogType = {
 };
 
 const Log: React.FC = () => {
-  const { run, data } = useRequest(getLogList, {
+  const { loading, run, data } = useRequest(getLogList, {
     defaultParams: [{ pageNum: 0, pageSize: 10 }],
   });
   const logList = get(data, 'data.result', []);
@@ -26,7 +27,7 @@ const Log: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Spin spinning={loading} size="large">
       {logList.map((item: LogType) => (
         <LogWrapper key={item.id}>
           <div className="content">
@@ -41,7 +42,7 @@ const Log: React.FC = () => {
         defaultPageSize={10}
         onChange={onChange}
       />
-    </>
+    </Spin>
   );
 };
 

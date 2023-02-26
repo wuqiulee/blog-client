@@ -2,12 +2,13 @@ import React, { useCallback } from 'react';
 import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
 import dayjs from 'dayjs';
+import { Spin } from 'antd';
 import { getSayList } from '@/services/api/say';
 import { SayWrapper, PaginationWrapper, TitleWrapper } from './style';
 import { SayType } from '@/types/say';
 
 const Say: React.FC = () => {
-  const { run, data } = useRequest(getSayList, {
+  const { loading, run, data } = useRequest(getSayList, {
     defaultParams: [{ pageNum: 0, pageSize: 10 }],
   });
   const sayList = get(data, 'data.result', []);
@@ -22,7 +23,7 @@ const Say: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Spin spinning={loading} size="large">
       <TitleWrapper>我的说说</TitleWrapper>
       {sayList.map((item: SayType) => (
         <SayWrapper key={item.id}>
@@ -38,7 +39,7 @@ const Say: React.FC = () => {
         defaultPageSize={10}
         onChange={onChange}
       />
-    </>
+    </Spin>
   );
 };
 

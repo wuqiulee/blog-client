@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRequest } from 'ahooks';
 import { get } from 'loadsh';
+import { Spin } from 'antd';
 import dayjs from 'dayjs';
 import { CalendarOutlined, FolderOpenOutlined, TagsOutlined } from '@ant-design/icons';
 import { getArticleList } from '@/services/api/article';
@@ -10,7 +11,7 @@ import { ArticleWrapper, PaginationWrapper, TitleWrapper } from './style';
 
 const Article: React.FC = () => {
   const navigate = useNavigate();
-  const { run, data } = useRequest(getArticleList, {
+  const { loading, run, data } = useRequest(getArticleList, {
     defaultParams: [{ pageNum: 0, pageSize: 8 }],
   });
   const articleList = get(data, 'data.result', []);
@@ -27,7 +28,7 @@ const Article: React.FC = () => {
   const gotoDetail = (id: number) => navigate(`/article/${id}`);
 
   return (
-    <>
+    <Spin spinning={loading} size="large">
       <TitleWrapper>我的文章</TitleWrapper>
       {articleList.map((item: ArticleType) => (
         <ArticleWrapper key={item.id} onClick={() => gotoDetail(item.id)}>
@@ -54,7 +55,7 @@ const Article: React.FC = () => {
         defaultPageSize={8}
         onChange={onChange}
       />
-    </>
+    </Spin>
   );
 };
 
