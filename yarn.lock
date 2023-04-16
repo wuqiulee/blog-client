@@ -7223,10 +7223,10 @@ map-obj@^4.0.0:
   resolved "https://registry.npmmirror.com/map-obj/-/map-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
-md-editor-rt@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.npmmirror.com/md-editor-rt/-/md-editor-rt-2.6.0.tgz#20a6f256dc46da0d71dbf281f43c4917737eb4f0"
-  integrity sha512-7pY4vxHfp9WFbz5IlfYWAK1lJlz6Rkf9wq0cjAU3/w/F84NwUkjbDSbQ5SuzYfPZ/ZsvfFIicdnDk8JgKATIDg==
+md-editor-rt@^2.11.2:
+  version "2.11.2"
+  resolved "https://registry.npmmirror.com/md-editor-rt/-/md-editor-rt-2.11.2.tgz#f905107a4dfe053c7d90f11ba332ad78a34bfe92"
+  integrity sha512-fXhqQxf+1DpjW0avnrLG9XE1oR5zsYwCiZV/fYyh0wpQRWkoxVPZiRtAEVGROrkRcwtM1TLei1N2U+ueRJPrRg==
 
 mdn-data@2.0.14:
   version "2.0.14"
