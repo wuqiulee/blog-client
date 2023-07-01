@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import routes from '@/router';
-// import { store, persistor } from '@/store';
 
 const Router: React.FC = () => {
   // 路由跳转自动回到顶部
