@@ -19,7 +19,6 @@ const Router: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ConfigProvider locale={zhCN}>
-      {/* <Provider store={store}> */}
       <Router />
       {/* </Provider> */}
     </ConfigProvider>
